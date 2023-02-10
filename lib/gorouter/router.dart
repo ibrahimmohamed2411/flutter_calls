@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:fluttercalls/gorouter/fourth_screen.dart';
 import 'package:fluttercalls/gorouter/second_screen.dart';
 import 'package:fluttercalls/gorouter/third_screen.dart';
@@ -27,7 +28,19 @@ GoRouter goRouter() => GoRouter(
         ),
         GoRoute(
           path: '/third',
-          builder: (context, state) => const ThirdScreen(),
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: ThirdScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(
+                  opacity: CurveTween(curve: Curves.easeInOutCirc)
+                      .animate(animation),
+                  child: child,
+                );
+              },
+            );
+          },
           redirect: (context, state) {
             if (!isAuthenticated()) {
               return '/fourth';

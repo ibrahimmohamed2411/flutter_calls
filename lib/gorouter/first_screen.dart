@@ -15,8 +15,7 @@ class FirstScreen extends StatelessWidget {
       body: Center(
         child: TextButton(
           onPressed: () {
-            // context.push('/third');
-            StackedService.navigatorKey!.currentContext!.push('/third');
+            context.push('/third');
           },
           child: Text('Go To Third Screen'),
         ),
