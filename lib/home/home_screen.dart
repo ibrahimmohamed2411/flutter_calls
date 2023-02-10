@@ -72,7 +72,6 @@ class UserCard extends StatelessWidget {
         children: [
           actionButton(false),
           actionButton(true),
-          
         ],
       ),
     );
@@ -81,9 +80,13 @@ class UserCard extends StatelessWidget {
   ZegoSendCallInvitationButton actionButton(bool isVideo) {
     return ZegoSendCallInvitationButton(
       isVideoCall: isVideo,
+
       resourceID: "zegouikit_call",
       invitees: [
-        ZegoUIKitUser(id: email, name: email),
+        ZegoUIKitUser(
+          id: email,
+          name: email,
+        ),
       ], //group call or one to one call
     );
   }

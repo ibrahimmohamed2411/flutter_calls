@@ -1,12 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttercalls/config/router/app_router.dart';
-import 'package:fluttercalls/locator/locator.dart';
-import 'package:fluttercalls/signin/signin_view_model.dart';
 import 'package:provider/provider.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 import 'firebase_options.dart';
+import 'gorouter/router.dart';
+import 'locator/locator.dart';
+import 'signin/signin_view_model.dart';
+
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   // If you're going to use other Firebase services in the background, such as Firestore,
+//   // make sure you call `initializeApp` before using other Firebase services.
+//   await Firebase.initializeApp();
+//   print("Handling a background message: ${message.messageId}");
+// }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,19 +23,26 @@ void main() async {
   runApp(const MyApp());
 }
 
+// The route configuration.
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SignInViewModel()),
+        ChangeNotifierProvider(
+          create: (_) => SignInViewModel(),
+        ),
       ],
-      child: MaterialApp(
-        navigatorKey: StackedService.navigatorKey,
+      child: MaterialApp.router(
+        routerConfig: goRouter(),
+        // theme: ThemeData(
+        // debugShowCheckedModeBanner: false,
+        // navigatorKey: StackedService.navigatorKey,
         title: 'Flutter Demo',
-        // home: SignInScreen(),
-        onGenerateRoute: AppRouter().onGenerateRoute,
+        // home: CounterScreen(),
+        // onGenerateRoute: AppRouter().onGenerateRoute,
       ),
     );
   }
