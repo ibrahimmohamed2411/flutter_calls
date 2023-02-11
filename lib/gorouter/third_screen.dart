@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ThirdScreen extends StatelessWidget {
   const ThirdScreen({super.key});
@@ -8,6 +9,14 @@ class ThirdScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Third Screen'),
+      ),
+      body: Center(
+        child: TextButton(
+          onPressed: () {
+            context.go('/first');
+          },
+          child: Text('test'),
+        ),
       ),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercalls/locator/locator.dart';
 import 'package:go_router/go_router.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});
@@ -15,7 +14,7 @@ class FirstScreen extends StatelessWidget {
       body: Center(
         child: TextButton(
           onPressed: () {
-            context.push('/third');
+            context.go('/second');
           },
           child: Text('Go To Third Screen'),
         ),
@@ -23,3 +22,8 @@ class FirstScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
