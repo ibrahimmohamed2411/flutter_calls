@@ -41,14 +41,10 @@ class MyApp extends StatelessWidget {
       // ),
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
-          
         ],
         supportedLocales: S.delegate.supportedLocales,
         home: FlutterAnimateScreen(),
